@@ -1,0 +1,266 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Qualité compte
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset ('lib/jquery-ui-1.9.2.custom.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset ('lib/bootstrap-fileupload/bootstrap-fileupload.js') }}"></script>
+	<script type="text/javascript" src="{{ asset ('lib/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+	<script type="text/javascript" src="{{ asset ('lib/bootstrap-daterangepicker/date.js') }}"></script>
+	<script type="text/javascript" src="{{ asset ('lib/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+	<script type="text/javascript" src="{{ asset ('lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js') }}"></script>
+	<script type="text/javascript" src="{{ asset ('lib/bootstrap-daterangepicker/moment.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset ('lib/bootstrap-timepicker/js/bootstrap-timepicker.js') }}"></script>
+	<script src="{{ asset ('lib/advanced-form-components.js') }}"></script>
+{% endblock %}
+{% block body %}
+
+	<section id="container">
+
+		<aside>
+			<div
+				id="sidebar" class="nav-collapse ">
+				<!-- sidebar menu start-->
+				<ul class="sidebar-menu" id="nav-accordion">
+					<p class="centered">
+						<a href="profile.html"><img src="img/profil.jpg" class="img-circle" width="80"></a>
+					</p>
+					<h5 class="centered">User</h5>
+					<!--<li class="mt">
+																																																																																																																																																																																																																																						                        <a class="active" href=#>
+																																																																																																																																																																																																																																						                            <i class="fa fa-home"></i>
+																																																																																																																																																																																																																																						                            <span>Accueil</span>
+																																																																																																																																																																																																																																						                        </a>
+																																																																																																																																																																																																																																						                    </li>-->
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-archive"></i>
+							<span>Situation de caisse</span>
+						</a>
+						<ul class="sub">
+							<li>
+								<a href="{{ path('decadaire') }}">Situation décadaire</a>
+							</li>
+							<li>
+								<a href="solde_principal.php">Solde principal</a>
+							</li>
+							<li>
+								<a href="sous_caisses.php">Sous caisses</a>
+							</li>
+							<li>
+								<a href="{{ path('encaissement') }}">Encaissement</a>
+							</li>
+							<li>
+								<a href="decaissement.php">Décaissement</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-users"></i>
+							<span>Charge de travail agent</span>
+						</a>
+						<ul class="sub">
+							<li>
+								<a href="Dossiers_en_cours.php">Dossiers en cours de traitement</a>
+							</li>
+							<li>
+								<a href="Dossiers_traites.php">Dossiers traités</a>
+							</li>
+							<li>
+								<a href="situation_conge.php">Situation de congé</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-book"></i>
+							<span>Situation de mandatement</span>
+						</a>
+						<ul class="sub">
+							<li>
+								<a href="mandats_recupere.php">Mandats récupérés</a>
+							</li>
+							<li>
+								<a href="mandats_en_cours_de_traitement.php">Mandats en cours de traitement</a>
+							</li>
+							<li>
+								<a href="mandats_vise.php">Mandats visés</a>
+							</li>
+							<li>
+								<a href="mandats_valides.php">Mandats validés</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<ahref="javascript:;">
+							<i class="fa fa-pencil-square-o"></i>
+							<span>Ecritures</span>
+						</a>
+						<ul class="sub">
+							<li>
+								<a href="ecritures_attentes.php">En attente de validation</a>
+							</li>
+							<li>
+								<a href="ecritures_valides.php">Validées</a>
+							</li>
+							<li>
+								<a href="ecritures_devalidees.php">Dévalidées</a>
+							</li>
+							<li>
+								<a href="ecritures_supprimees.php">Supprimées</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-exchange"></i>
+							<span>Transfert</span>
+						</a>
+						<ul class="sub">
+							<li>
+								<a href="transfert_attente_couverture.php">En attente de couverture</a>
+							</li>
+							<li>
+								<a href="couvertures_effectuees.php">Couvertures effectuées</a>
+							</li>
+							<li>
+								<a href="attente_transfert.php">En attente de transfert</a>
+							</li>
+							<li>
+								<a href="transferts_envoyes.php">Transferts envoyés</a>
+							</li>
+							<li>
+								<a href="tableau_recapitulatif.php">Tableau récapitulatif</a>
+							</li>
+						</ul>
+					</li>
+
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class=" fa fa-money"></i>
+							<span>Paiement</span>
+						</a>
+						<ul class="sub">
+							<li>
+								<a href="vb_attente.php">VB en attente de paiement</a>
+							</li>
+							<li>
+								<a href="bc_a_payer.php">BC à payer</a>
+							</li>
+							<li>
+								<a href="virements_effectues.php">Virements effectués</a>
+							</li>
+							<li>
+								<a href="bc_payes.php">BC payés</a>
+							</li>
+							<li>
+								<a href="ov_attente.php">OV en attente de signature</a>
+							</li>
+
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a class="active" href="javascript:;">
+							<i class="fa fa-list"></i>
+							<span>Qualité des comptes</span>
+						</a>
+						<ul class="sub">
+							<li>
+								<a href="comptes_anormaux.php">Comptes anormaux</a>
+							</li>
+							<li>
+								<a href="comptes_non_ventiles.php">Comptes non ventilés</a>
+							</li>
+							<li>
+								<a href="comptes_non_apures.php">Comptes d'attente non apurés</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sub-menu">
+						<a href="javascript:;">
+							<i class="fa fa-file-o"></i>
+							<span>SPECL</span>
+						</a>
+						<ul class="sub">
+							<li>
+								<a href="decision_attente.php">Décision en attente de validation</a>
+							</li>
+							<li>
+								<a href="carte_fanilo.php">Carte Fanilo</a>
+							</li>
+							<li>
+								<a href="siigfp_specl.php">Transfert SIIGFP-SPECL</a>
+							</li>
+						</ul>
+					</li>
+
+				</ul>
+				<!-- sidebar menu end-->
+			</div>
+		</aside>
+	</section>
+
+	<section id="main-content">
+		<section class="wrapper">
+			<div class="row mt">
+				<div class="col-md-12">
+					<div class="content-panel">
+						<table class="table table-striped table-advance table-hover">
+							<h4>QUALITE COMPTE</h4>
+							<form method="POST">
+								<div class="form-group">
+									<label class="control-label col-md-3" for="from">Date du</label>
+									<div class="col-md-4">
+										<div class="input-group input-large" data-date="01/01/2014" data-date-format="mm/dd/yyyy">
+											<input type="text" class="form-control dpd1" name="from" id="from">
+											<span class="input-group-addon">à</span>
+											<input type="text" class="form-control dpd2" name="to" id="to">
+										</div>
+									</div>
+									<button type="submit" class="btn btn-success">Filtrer</button>
+								</div>
+							</form>
+							<hr>
+							<thead>
+								<tr>
+									<th>
+										<i class="fa fa-bullhorn"></i>
+										Compte</th>
+									<th class="hidden-phone">
+										<i class="fa fa-question-circle"></i>
+										Montant</th>
+									<th>
+										<i class="fa fa-bookmark"></i>
+										Date</th>
+									<th>
+										<i class=" fa fa-edit"></i>
+										Status</th>
+									{# <th></th> #}
+								</tr>
+							</thead>
+							{% for donnee in donnees %}
+								<tbody>
+									<tr>
+										<td>{{ donnee.libelle }}</td>
+										<td class="hidden-phone">{{ donnee.montant }}</td>
+										<td>{{ donnee.createdAt|date('d/m/Y') }}</td>
+										<td>
+											<span class="label label-info label-mini">{{ donnee.status }}</span>
+											<!--bleu-->
+										</td>
+									</tr>
+								</tbody>
+							{% endfor %}
+						</td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- /content-panel -->
+	</div>
+	<!-- /col-md-12 -->
+</div>
+<!-- /row --></section></section><!-- /MAIN CONTENT --><!--main content end--></section>{% endblock %}

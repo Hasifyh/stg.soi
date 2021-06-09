@@ -1,0 +1,34 @@
+doctrine:
+    dbal:
+        default_connection: default 
+        connections:
+            default:
+                driver: oci8
+                host: 'localhost'
+                port: '1521'
+                dbname: 'tresor'
+                user: 'ulrich'
+                password: 'Managercnam1'
+                service: true                # Oracle specific (SERVICE_NAME instead of SID)
+                servicename: 'tresor'
+                charset: AL32UTF8
+
+        # IMPORTANT: You MUST configure your server version,
+        # either here or in the DATABASE_URL env var (see .env file)
+        #server_version: '13'
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App
+services:
+    my.oracle.listener:
+        class: Doctrine\DBAL\Event\Listeners\OracleSessionInit
+        tags:
+            - { name: doctrine.event_listener, event: postConnect, connection: default }
