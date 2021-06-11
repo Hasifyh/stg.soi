@@ -414,10 +414,10 @@ ul.sidebar-men.active i {
     z-index: 1002;
 }
 
-.black-bg {
+/* .black-bg {
     background: #22242a;
     border-bottom: 1px solid #393d46;
-}
+} */
 
 .wrapper {
     display: inline-block;
@@ -1623,9 +1623,9 @@ PANELS CONFIGURATIONS
 }
 
 /* Grid Showcase*/
-
+/* 
 	margin-bottom: 15px;
-}
+} */
 
 .show-grid [class^=col-] {
 	padding-top: 10px;
