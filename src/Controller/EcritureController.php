@@ -18,7 +18,7 @@ class EcritureController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(SituationData::class);
 
-        $donnees = null;
+        // $donnees = null;
         if ($request->request->get('from') == null || $request->request->get('to') == null) {
             $donnees = $repository->findBy(['status' => 'Supprimé']);
         } else {

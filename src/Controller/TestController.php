@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\SituationData;
 use App\Repository\SituationDataRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,16 +31,28 @@ class TestController extends AbstractController
 
 
 
+    // #[Route('/test', name: 'test')]
+    // public function index(Request $request): Response
+    // {
+    //     $repository = $this->getDoctrine()->getRepository(SituationData::class);
+    //     //$nombre = $repository->findBy(['status' => 'Supprimé']);
+    //     if ($repository instanceof SituationDataRepository)
+    //         $nombreCompte = $repository->countBy(['status' => 'Supprimé']);
+    //     return $this->render('test/index.html.twig', [
+    //         'controller_name' => 'TestController',
+    //         'nombre' => $nombreCompte
+    //     ]);
+    // }
+
     #[Route('/test', name: 'test')]
     public function index(Request $request): Response
     {
-        $repository = $this->getDoctrine()->getRepository(SituationData::class);
-        //$nombre = $repository->findBy(['status' => 'Supprimé']);
-        if ($repository instanceof SituationDataRepository)
-            $nombreCompte = $repository->countBy(['status' => 'Supprimé']);
+
+        $timestamp = mt_rand(1 * 3600 * 24 * 365 * 30, time());
+        $randomDate = new DateTime(date("Y/m/d", $timestamp));
+        dump($randomDate);
         return $this->render('test/index.html.twig', [
-            'controller_name' => 'TestController',
-            'nombre' => $nombreCompte
+            'controller_name' => 'TestController'
         ]);
     }
 }

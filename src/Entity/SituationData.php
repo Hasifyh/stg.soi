@@ -47,6 +47,11 @@ class SituationData
      */
     private $id_parent_Data;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $id_status;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class SituationData
     public function setIdParentData(?int $id_parent_Data): self
     {
         $this->id_parent_Data = $id_parent_Data;
+
+        return $this;
+    }
+
+    public function getIdStatus(): ?int
+    {
+        return $this->id_status;
+    }
+
+    public function setIdStatus(?int $id_status): self
+    {
+        $this->id_status = $id_status;
 
         return $this;
     }

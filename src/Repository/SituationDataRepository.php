@@ -6,6 +6,7 @@ use App\Entity\SituationData;
 use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * @method SituationData|null find($id, $lockMode = null, $lockVersion = null)
@@ -41,19 +42,20 @@ class SituationDataRepository extends ServiceEntityRepository
         return $persister->count($condition);
     }
 
-    public function compter()
+    public function getByMonth(Integer $m)
     {
-        //     $query = $this->createQueryBuilder(alias: 'c')
-        //         ->select('count(c . id)')
-        //         ->where('c.status = attente')
-        //         // ->setParameters(
-        //         //     array(
-        //         //         'statu' => $statu
-        //         //     )
-        //         // )
-        //         ->getQuery();
-        //     //->getSingleScalarResult();
-        //     return $query->getResult();
+        $query = $this->createQueryBuilder(alias: 'c')
+            ->where('MONTH(c.createdAt)=m')
+            ->andWhere('c.createdAt >= :d1')
+            ->andWhere('c.id_parent_Data = 15')
+            ->setParameters(
+                array(
+                    'd1' => $d1,
+                    'd2' => $d2,
+                )
+            )
+            ->getQuery();
+        return $query->getResult();
     }
 }
     // /**
