@@ -42,7 +42,19 @@ class EcritureController extends AbstractController
     #[Route('/EcritureEnAttente', name: 'EcritureEnAttente')]
     public function enAttente(): Response
     {
-
+        /**
+         * COURBE
+         * ecriture en attente pendandt 7 mois
+         * month_demandé1= month(d1);
+         * month_demandé2= month(d2);
+         * if(MONTH(createdAt)>=d1)
+         * compter les ecritures en attente par mois des 7 mois m1; m2; m3; m4; m5; m6; m7
+         * compter la totale des ecritures par mois
+         *      total par mois = countBy(['id=>ecriture', 'status=>en attente', 'Month(createdAt)=1'])
+         * => pourcentage = (m1 * 100)/total par mois
+         * 
+         * 
+         */
 
         return $this->render('ecriture/EcritureEnAttente.html.twig', [
             'controller_name' => 'EcritureController',
