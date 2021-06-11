@@ -46,12 +46,40 @@ class SituationDataRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder(alias: 'c')
             ->where('MONTH(c.createdAt)=m')
-            ->andWhere('c.createdAt >= :d1')
-            ->andWhere('c.id_parent_Data = 15')
             ->setParameters(
                 array(
-                    'd1' => $d1,
-                    'd2' => $d2,
+                    'm' => $m
+                )
+            )
+            ->getQuery();
+        return $query->getResult();
+    }
+
+    public function getByYear(Integer $m)
+    {
+        $query = $this->createQueryBuilder(alias: 'c')
+            ->where('YEAR(c.createdAt)=m')
+            ->setParameters(
+                array(
+                    'm' => $m
+                )
+            )
+            ->getQuery();
+        return $query->getResult();
+    }
+
+    public function getBydmy(Integer $d, Integer $m, Integer $y)
+    {
+        $query = $this->createQueryBuilder(alias: 'c')
+            ->where('DAY(c.createdAt)=d')
+            ->where('MONTH(c.createdAt)=m')
+            ->where('YEAR(c.createdAt)=y')
+            ->setParameters(
+                array(
+                    'd' => $d,
+                    'm' => $m,
+                    'y' => $y
+
                 )
             )
             ->getQuery();
